@@ -13,17 +13,20 @@ import com.example.demo.repo.UserRepo;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
+  // this class is used by the Dao AuthenticationProvider to load the user for
+  // verification
+  // and it is injected as a bean in the security config
 
   @Autowired
   private UserRepo userRepo;
 
-  @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     Optional<User> user = userRepo.findByUsername(username);
-    if (user == null)
-      throw new UsernameNotFoundException("The User with the username " + username
-          + " is not found");
-    return user.orElse(null);
+    if (user.isPresent()) {
+      return user.get();
+    } else {
+      throw new UsernameNotFoundException("The user name is not found");
+    }
   }
 
 }
