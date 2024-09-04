@@ -76,8 +76,8 @@ In order to customize this, you only need to do a few things:
     
     Example:
     
-    1. `.requestMatchers("/sampleEndpoint").hasRole("SAMPLE_ROLE")
-    2. `.requestMatchers("/forMultipleRoles").hasAnyRole("SAMPLE_ROLE1", "SAMPLE_ROLE_2") 
+    1. `.requestMatchers("/sampleEndpoint").hasRole("SAMPLE_ROLE")`
+    2. `.requestMatchers("/forMultipleRoles").hasAnyRole("SAMPLE_ROLE1", "SAMPLE_ROLE_2")`
     3. `.antMatchers("/api/**").hasRole("SAMPLE_ROLE")`
     
     The last one is used to match endpoints using a regular expression.
